@@ -1,126 +1,78 @@
-# 🧙‍♂️ Dungeon Crawler CLI
+# Dungeon Crawler CLI (Final Snapshot)
 
-A **text-based adventure game** written in **pure Ruby**, designed as a fun way to refresh and demonstrate Ruby fundamentals — OOP, control flow, data structures, and clean CLI architecture.
-
-The project simulates a **turn-based dungeon crawl** where the player explores randomly generated rooms, battles monsters, collects loot, and tries to survive until they find the exit.
+A compact, turn-based dungeon crawl built in Ruby while brushing up on language fundamentals. Battle randomly spawned monsters, gather loot, and level your adventurer until you topple the Eclipsed Warden and escape the depths.
 
 ---
 
-## 🚀 Overview
+## Highlights
 
-**Dungeon Crawler CLI** is built as a modular Ruby project, structured for clarity and scalability.
-It can later be extended into a **Rails-powered web app** (with persistent players, leaderboards, and RESTful APIs).
-
-The goal is to:
-
-- Reinforce Ruby fundamentals
-- Practice modular design and OOP
-- Build a complete, working terminal application
-- (Optional) Bridge it into Rails for web integration
+- **Modular codebase** – namespaced under `DungeonCrawler`, organized inside `lib/`.
+- **Colorized terminal output** for quick visual cues (info, danger, loot, XP, etc.).
+- **Dynamic encounters** – tougher enemies unlock as you level, culminating in a final guardian.
+- **Inventory & consumables** – potions, buffs, and passive trinkets affect stats, loot chance, and escape chances.
+- **Level-up path** – XP rewards grant HP, attack, luck, and evasive bonuses over time.
 
 ---
 
-## 🧩 Features (Phase 1 - CLI Core)
+## Commands
 
-- 🎮 **Turn-based gameplay** – each move matters
-- ⚔️ **Combat system** – fight goblins, trolls, and dragons
-- 🧱 **Procedural dungeon generation** – random room contents
-- 💰 **Inventory and loot** – collect gold, weapons, and potions
-- ❤️ **Player stats** – HP, attack, defense, healing
-- 🧠 **Command system** – move, attack, heal, inspect, inventory
-- ⚗️ **YAML-driven monsters & items** – easily configurable data files
-- 🕹️ **Clean CLI loop** – smooth and readable text-based interactions
-
----
-
-## 🧱 Planned Features (Phase 2 - Expansion)
-
-- 🏰 **Multi-level dungeon** with increasing difficulty
-- 💾 **Save & Load** game state using YAML serialization
-- 🎨 **Colored text / ASCII art** for immersive visuals
-- 🧪 **RSpec tests** for game logic and OOP components
-- 🧭 **Command aliases** (`n`, `s`, `e`, `w`, `a`, `h`) for faster navigation
-- ⚙️ **Difficulty modes** (Easy, Normal, Hard)
-- 🎯 **Special abilities & item types**
+| Command                | Alias(es)             | Description                             |
+|------------------------|-----------------------|-----------------------------------------|
+| `move <direction>`     | `m`, `n`, `s`, `e`, `w` | Explore the dungeon / trigger encounters |
+| `attack`               | `a`                   | Strike the current monster               |
+| `heal`                 | –                     | Use the best available healing option    |
+| `use <item>`           | –                     | Consume or activate an inventory item    |
+| `inspect`              | `look`, `l`           | View current foe details (if any)        |
+| `inventory`            | `inv`                 | List held items with descriptions        |
+| `stats`                | `status`              | Show level, XP, HP, attack, luck, etc.   |
+| `help`                 | –                     | Print command help                       |
+| `quit`                 | `q`, `exit`           | Leave the dungeon                        |
 
 ---
 
-## 🌐 Phase 3 - Rails Extension (Optional)
+## Requirements
 
-After the CLI version is stable, the project can evolve into a simple **Ruby on Rails web application**, using the CLI core as a foundation.
-
-- 🧑‍💻 **Models:** `Player`, `Monster`, `Battle`, `DungeonRoom`
-- 🌍 **Routes:** `/api/start`, `/api/move`, `/api/attack`
-- 💾 **Database:** PostgreSQL for persistence
-- ⚡ **Frontend (Optional):** React or ERB for browser-based play
-
-This step ties together backend skills, Rails routing, REST APIs, and full-stack design.
+- Ruby 3.0 or newer
+- A terminal that supports ANSI colors (optional but recommended)
 
 ---
 
-## 🗂️ Project Structure
-
-```
-dungeon_crawler/
-├── game.rb # Entry point – main game loop
-├── player.rb # Player stats and actions
-├── monster.rb # Enemy classes and combat logic
-├── dungeon.rb # Map and dungeon generation
-├── room.rb # Handles room events and interactions
-├── item.rb # Loot and items
-├── actions.rb # Command parsing and execution
-├── utils.rb # Helper functions (formatting, delays)
-└── data/
-├── monsters.yml # Monster definitions
-├── items.yml # Item definitions
-└── rooms.yml # Optional room templates
-```
-
-## 🧠 Architecture Notes
-
-- **`Game`** is the orchestrator — runs the main loop and manages state.
-- **`Player`** encapsulates player data and logic.
-- **`Dungeon`** manages navigation and current room tracking.
-- **`Room`** defines what happens when you enter — combat, loot, trap, etc.
-- **`Monster`** handles enemy behavior and attacks.
-- **`Item`** and **`Inventory`** manage loot and healing.
-- **`Actions`** abstracts user commands for clarity.
-- **`Utils`** contains optional CLI formatting helpers (e.g., color, delay).
-
----
-
-## 🧭 Roadmap
-
-| Phase | Goal           | Description                                  |
-| ----- | -------------- | -------------------------------------------- |
-| **1** | Core CLI game  | Player movement, basic combat, random events |
-| **2** | Depth & polish | Inventory, YAML data, colors, saving         |
-| **3** | Testing        | Add RSpec tests for Player, Monster, Game    |
-| **4** | Rails port     | Create API endpoints and models              |
-| **5** | Web front-end  | Optional React interface for online play     |
-
----
-
-## 🧰 Tech Stack
-
-| Layer                  | Tools                           |
-| ---------------------- | ------------------------------- |
-| **Language**           | Ruby (>= 3.0)                   |
-| **CLI Enhancements**   | colorize, tty-prompt (optional) |
-| **Data**               | YAML (for monsters/items)       |
-| **Testing**            | RSpec                           |
-| **Version Control**    | Git + GitHub                    |
-| **Optional Web Layer** | Ruby on Rails + PostgreSQL      |
-
----
-
-## ⚙️ Installation
+## Getting Started
 
 ```bash
-# Clone the repo
-gh repo clone https://github.com/UmutAkturk14/dungeon-crawler-cli
-cd dungeon-crawler-cli
+# clone (or copy) the project directory
+cd dungeon-crawler
 
-# Run the game
-ruby game.rb
+# run the adventure
+ruby play.rb
 ```
+
+You are dropped straight into the CLI loop. Type `help` to view available commands, explore the dungeon, and survive long enough to reach level 6 for the final showdown.
+
+---
+
+## Project Structure
+
+```
+.
+├── lib/
+│   ├── dungeon_crawler.rb          # convenience require file
+│   └── dungeon_crawler/
+│       ├── actions.rb              # command handling and gameplay logic
+│       ├── game.rb                 # main Game class / loop
+│       ├── game_objects.rb         # monsters, loot, spawn helpers
+│       └── helpers.rb              # logging + ANSI color utilities
+└── play.rb                         # entry point (require + start Game)
+```
+
+All runtime logic lives under `DungeonCrawler::`. `play.rb` simply requires the library and calls `DungeonCrawler::Game.new.start`.
+
+---
+
+## Notes
+
+- This is the final iteration; no further work is planned.
+- The game was created as a personal Ruby refresher—feel free to borrow or build on it.
+- If you run into ANSI color issues, set `TERM` to a color-capable value (e.g., `xterm-256color`).
+
+Happy crawling!
